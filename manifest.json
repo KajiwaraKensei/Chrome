@@ -1,0 +1,22 @@
+{
+  "name": "Getting Started Example",
+  "version": "1.0",
+  "description": "Build an Extension!",
+  "permissions": [ "storage",  "gcm", "notifications"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "32": "images/i-bui.png"
+    }
+  },
+ "icons": {
+    "48": "images/i-bui.png"
+  },
+  "options_page":"option.html",
+  "manifest_version": 2
+}
