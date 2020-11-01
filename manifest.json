@@ -1,5 +1,5 @@
 {
-  "name": "Getting Started Example",
+  "name": "loco",
   "version": "1.0",
   "description": "Build an Extension!",
   "permissions": [ "storage",  "gcm", "notifications"],
@@ -8,7 +8,7 @@
     "persistent": false
   },
   
-  "page_action": {
+  "browser_action": {
     "default_popup": "popup.html",
     "default_icon": {
       "32": "images/i-bui.png"
@@ -17,6 +17,11 @@
  "icons": {
     "48": "images/i-bui.png"
   },
+  "content_scripts": [{
+      "matches": ["http://*/*", "https://*/*" ],
+      "js": ["dist/script.js"],
+      "css": ["content/styles.css"]
+  }],
   "options_page":"option.html",
   "manifest_version": 2
 }
