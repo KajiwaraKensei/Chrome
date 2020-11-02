@@ -20,7 +20,7 @@
   "content_scripts": [{
       "matches": ["http://*/*", "https://*/*" ],
       "js": ["dist/script.js"],
-      "css": ["content/styles.css"]
+      "css": ["public/styles.css"]
   }],
   "options_page":"option.html",
   "manifest_version": 2

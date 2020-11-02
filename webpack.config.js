@@ -1,6 +1,5 @@
+var path = require('path');
 module.exports = {
-  mode: "development",
-
   entry: "./src/index.tsx",
   output: {
     path: `${__dirname}/dist`,
@@ -15,6 +14,9 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: {
+      '~': path.resolve(__dirname, '/src'),
+    },
     extensions: [".ts", ".tsx", ".js", ".json"],
   },
   target: ["web", "es5"],

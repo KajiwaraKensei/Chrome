@@ -40,3 +40,11 @@ chrome.gcm.onMessage.addListener((message) => {
     body: JSON.stringify(message),
   });
 });
+
+chrome.runtime.onConnect.addListener(function(port){
+  port.onMessage.addListener(function(request){
+    var path = request.type;
+    console.log("back", path);
+    port.postMessage({data: request.path});
+  });
+});
