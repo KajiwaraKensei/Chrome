@@ -13,10 +13,10 @@ const Component: React.FC<Props> = ({ className }) => (
 
 export default styled(Component)`
   position: fixed;
-  bottom: ${width * 3}rem;
-  right: ${width * 3}rem;
-  width: 100px;
-  height: 100px;
+  bottom: 2rem;
+  right: 2rem;
+  width: ${width}px;
+  height: ${width}px;
   color: #fff;
   ${flexCenter}
   z-index: 999;

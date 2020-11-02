@@ -6,5 +6,5 @@ let newContent = document.createTextNode("Hello!");
 let newElement = document.createElement("div");
 newElement.appendChild(newContent);
 newElement.setAttribute("id", ROOT_ID);
-document.body.insertBefore(newElement, document.body.firstChild);
+document.body.insertBefore(newElement, document.body.lastChild);
 ReactDom.render(<App />, document.getElementById(ROOT_ID));
