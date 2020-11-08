@@ -5,7 +5,8 @@ export type Props = {
 };
 
 const Component: React.FC<Props> = (props) => {
-  return <div></div>;
+  const { className } = props;
+  return <div className={className}></div>;
 };
 
 export default styled(Component);

@@ -1,3 +1,3 @@
 import List from "./List";
-
-export { List };
+import DisplayName from "./DisplayName";
+export { List, DisplayName };
