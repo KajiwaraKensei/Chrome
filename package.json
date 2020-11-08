@@ -2,7 +2,7 @@
   "scripts": {
     "build": "npm run fmt && webpack",
     "watch": "webpack -w",
-    "fmt": "prettier --write \"**_src/**/*.ts*\""
+    "fmt": "prettier --write \"src/**/*.ts*\""
   },
   "devDependencies": {
     "ts-loader": "^8.0.7",

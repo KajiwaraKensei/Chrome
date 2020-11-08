@@ -5,9 +5,9 @@
 *.log
 
 # Compiled JavaScript files
-**/*.js
+*/*.js
 **/*.js.map
-
+functions/**/*.js
 # Except the ESLint config file
 !.eslintrc.js
 

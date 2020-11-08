@@ -8,8 +8,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "~/content/*": ["content_src/*"],
-      "~/option/*": ["option_src/*"]
+      "~/*": ["src/*"]
     },
     "lib": [
       "es2020",

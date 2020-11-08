@@ -4,7 +4,7 @@
   "description": "Build an Extension!",
   "permissions": [ "storage",  "gcm", "notifications"],
   "background": {
-    "scripts": ["background/index.js"],
+    "scripts": ["background/script.js"],
     "persistent": false
   },
   
@@ -19,7 +19,7 @@
   },
   "content_scripts": [{
       "matches": ["http://*/*", "https://*/*" ],
-      "js": ["content/script.bundle.js"],
+      "js": ["content/script.js"],
       "css": ["content/styles.css"]
   }],
   "options_page":"option/index.html",
