@@ -2,8 +2,8 @@ var path = require('path');
 module.exports = {
   entry: "./src/index.tsx",
   output: {
-    path: `${__dirname}/dist`,
-    filename: "script.js",
+    path: `${__dirname}/content`,
+    filename: "index.js",
   },
   module: {
     rules: [
