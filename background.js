@@ -6,7 +6,7 @@ const refreshToken = async () => {
     scope: "GCM",
   };
   let token = await new Promise((resolve, reject) => {
-    let r = chrome.instanceID.getToken(tokenParams, (token) => {
+    chrome.instanceID.getToken(tokenParams, (token) => {
       if (chrome.runtime.lastError) {
         reject(chrome.runtime.lastError);
       } else {
@@ -34,10 +34,11 @@ chrome.instanceID.onTokenRefresh.addListener(() => {
   new Notification('"onTokenRefresh" event fired');
   refreshToken();
 });
-chrome.gcm.onMessage.addListener((message) => {
-  console.log(message);
+chrome.gcm.onMessage.addListener((res) => {
+  console.log(res);
+  const message = res.body.data || '不明'
   new Notification('"onMessage" event fired', {
-    body: JSON.stringify(message),
+    message,
   });
 });
 
@@ -47,4 +48,10 @@ chrome.runtime.onConnect.addListener(function(port){
     console.log("back", path);
     port.postMessage({data: request.path});
   });
+});
+chrome.runtime.onMessage.addListener(function(message){
+  switch (message){
+    case "newConfig":
+      chrome.tabs.create({ url: "chrome://extensions/?options=" + chrome.runtime.id }); 
+  }
 });

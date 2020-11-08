@@ -13,5 +13,7 @@ export default (Component: React.FC<Props>) => styled(Component)<StyleProps>`
   background-color: #000;
   border-radius: 50%;
   z-index: 100;
+  cursor: pointer;
+  user-select: none;
   ${flexCenter}
 `;

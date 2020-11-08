@@ -5,6 +5,7 @@ import Character from "./Character";
 import CloseButton from "./CloseButton";
 import ConfigButton from "./ConfigButton";
 import SendButton from "./SendButton";
+import { getToday } from "~/util";
 type Props = {
   className?: string;
 };
@@ -12,6 +13,11 @@ export const width = 100;
 
 const Component: React.FC<Props> = (props) => {
   const port = browser.runtime.connect();
+  browser.storage.local.get("login").then(({ login }) => {
+    const today = getToday();
+    if (login === today) {
+    }
+  });
   const handleEvent = () => {
     port.postMessage({ type: "create", path: location.href });
     port.onMessage.addListener(function (response) {
@@ -19,13 +25,18 @@ const Component: React.FC<Props> = (props) => {
       console.log(data);
     });
   };
+  const [isDisplay, setISDisplay] = React.useState(true);
   const [toggle, setToggle] = React.useState(false);
   return (
-    <div className={props.className} onClick={handleEvent}>
-      <Character onClick={() => setToggle(!toggle)} />
-      <SendButton isOpen={toggle} />
-      <ConfigButton isOpen={toggle} />
-      <CloseButton isOpen={toggle} />
+    <div className={props.className}>
+      {isDisplay ? (
+        <>
+          <Character onClick={() => setToggle(!toggle)} />
+          <SendButton isOpen={toggle} />
+          <ConfigButton isOpen={toggle} />
+          <CloseButton onClose={() => setISDisplay(false)} isOpen={toggle} />
+        </>
+      ) : null}
     </div>
   );
 };

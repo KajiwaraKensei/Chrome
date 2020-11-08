@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { flexCenter, center } from "~/util/style"
 import {width} from ".."
+import {Props} from "."
+
 export type StyleProps = {
   isOpen?: boolean
 }
 
 const c = 100 / 2.5
-export default (Component: React.FC) => styled(Component)<StyleProps>`
+export default (Component: React.FC<Props>) => styled(Component)<StyleProps>`
   position: absolute;
   bottom: -${c / 2}px;
   left: -${c + 10}px;

@@ -1,13 +1,21 @@
 import React from "react";
 import styled from "./style";
-type Props = {
+export type Props = {
   className?: string;
+  onClose?: () => void;
 };
 export const width = 3;
 
 const Component: React.FC<Props> = (props) => {
-  const { className } = props;
-  return <div className={className}>Close</div>;
+  const { className, onClose } = props;
+  const handleClick = () => {
+    onClose && onClose();
+  };
+  return (
+    <div onClick={handleClick} className={className}>
+      Close
+    </div>
+  );
 };
 
 export default styled(Component);
