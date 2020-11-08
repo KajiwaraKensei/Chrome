@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "build": "prettier --write \"src/**/*.tsx\" && webpack",
+    "build": "npm run fmt && webpack",
     "watch": "webpack -w",
-    "fmt": "prettier --write \"src/**/*.tsx\""
+    "fmt": "prettier --write \"**_src/**/*.ts*\""
   },
   "devDependencies": {
     "ts-loader": "^8.0.7",

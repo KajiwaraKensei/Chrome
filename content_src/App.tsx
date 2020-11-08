@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import App, { width } from "~/components";
-import { flexCenter } from "~/util/style";
+import App, { width } from "~/content/components";
+import { flexCenter } from "~/content/util/style";
 type Props = {
   className?: string;
 };

@@ -5,7 +5,7 @@ import Character from "./Character";
 import CloseButton from "./CloseButton";
 import ConfigButton from "./ConfigButton";
 import SendButton from "./SendButton";
-import { getToday } from "~/util";
+import { getToday } from "~/content/util";
 type Props = {
   className?: string;
 };
@@ -18,13 +18,6 @@ const Component: React.FC<Props> = (props) => {
     if (login === today) {
     }
   });
-  const handleEvent = () => {
-    port.postMessage({ type: "create", path: location.href });
-    port.onMessage.addListener(function (response) {
-      const data = response.data;
-      console.log(data);
-    });
-  };
   const [isDisplay, setISDisplay] = React.useState(true);
   const [toggle, setToggle] = React.useState(false);
   return (

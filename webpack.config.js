@@ -1,9 +1,12 @@
 var path = require('path');
 module.exports = {
-  entry: "./src/index.tsx",
+  entry: {
+    'option/script': "./content_src/index.tsx",
+    'content/script': "./option_src/index.tsx",
+  },
   output: {
-    path: `${__dirname}/content`,
-    filename: "index.js",
+    path: __dirname,
+    filename: "[name].bundle.js",
   },
   module: {
     rules: [
@@ -15,7 +18,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, '/src'),
+      '~/content': path.resolve(__dirname, '/content_src'),
+      '~/option': path.resolve(__dirname, '/option_src'),
     },
     extensions: [".ts", ".tsx", ".js", ".json"],
   },
