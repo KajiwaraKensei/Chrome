@@ -9,6 +9,7 @@ const Component: React.FC<Props> = (props) => {
   const { className } = props;
   const [userName, setUserName] = React.useState("");
   const [originName, setOriginName] = React.useState("");
+  const [toggle, setToggle] = React.useState(false);
   React.useEffect(() => {
     getUsername().then((username) => {
       setUserName(username);
@@ -20,15 +21,35 @@ const Component: React.FC<Props> = (props) => {
   };
 
   const handleSave = () => {
-    updateUsername(userName).then(() => {
-      setOriginName(userName);
-    });
+    updateUsername(userName)
+      .then(() => {
+        setOriginName(userName);
+      })
+      .finally(() => {
+        setToggle(false);
+      });
   };
-  return (
-    <div className={className}>
-      <h2>ユーザー名: {originName}</h2>
+  const EditComponent = (
+    <div>
       <input type="text" value={userName} onChange={handleChangeName} />
       {originName !== userName && <button onClick={handleSave}>save</button>}
+    </div>
+  );
+  const NoEditComponent = (
+    <>
+      {originName}
+      <button
+        onClick={() => {
+          setToggle(true);
+        }}
+      >
+        edit
+      </button>
+    </>
+  );
+  return (
+    <div className={className}>
+      <h2>ユーザー名: {toggle ? EditComponent : NoEditComponent}</h2>
     </div>
   );
 };

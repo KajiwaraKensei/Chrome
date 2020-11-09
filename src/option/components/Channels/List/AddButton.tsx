@@ -1,13 +1,13 @@
 import React from "react";
-import { addChannel, checkChannelID } from "~/option/util";
+import { checkChannelID } from "~/option/util";
 import { addStyled } from "./style";
 export type Props = {
   className?: string;
-  onChange?: (nextChannels: string[]) => void;
+  onSubmit?: (channelID: string) => void;
 };
 
 const Component: React.FC<Props> = (props) => {
-  const { className, onChange } = props;
+  const { className, onSubmit } = props;
   const [toggle, setToggle] = React.useState(false);
   const [channelID, setChannelID] = React.useState("");
   const [error, setError] = React.useState<false | string>(false);
@@ -21,11 +21,9 @@ const Component: React.FC<Props> = (props) => {
   const addSubmit = async () => {
     const result = await checkChannelID(channelID);
     setError(result);
-    if (result) return;
-    addChannel(channelID).then((channels) => {
-      onChange && onChange(channels);
-    });
+    !result && onSubmit && onSubmit(channelID);
   };
+
   const addComponent = (
     <div>
       {error && <div>{error}</div>}

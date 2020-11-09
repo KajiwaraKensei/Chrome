@@ -29,7 +29,9 @@ export const setChannel = async (
       Success(res);
     });
   } catch (err) {
-    Fail(res);
+    console.log("err", err);
+
+    Fail(res, 500, err);
   }
 };
 

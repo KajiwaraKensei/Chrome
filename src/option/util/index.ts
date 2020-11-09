@@ -1,5 +1,8 @@
 import { browser } from "webextension-polyfill-ts";
-
+import {
+  setChannel,
+  deleteChannel as CloudDeleteChannel,
+} from "./CloudFunctions";
 const MAX_CHANNEL_ID_LENGTH = 20;
 const MAX_ABLE_CHANNEL = 10;
 export const checkChannelID = async (channelID: string) => {
@@ -23,20 +26,27 @@ export const getChannels = () =>
     return storage["channels"] as string[];
   });
 
-export const addChannel = (channelID: string) =>
-  getChannels().then((channels) => {
+export const addChannel = async (channelID: string) => {
+  if (!(await setChannel(channelID))) {
+    return getChannels();
+  }
+  return getChannels().then((channels) => {
     const nextChannels = [...new Set([...channels, channelID])];
     browser.storage.local.set({ channels: nextChannels });
     return nextChannels;
   });
+};
 
-export const deleteChannel = (channelID: string) =>
-  getChannels().then((channels) => {
+export const deleteChannel = async (channelID: string) => {
+  if (!(await CloudDeleteChannel(channelID))) {
+    return getChannels();
+  }
+  return getChannels().then((channels) => {
     const nextChannels = channels.filter((c) => c !== channelID);
     browser.storage.local.set({ channels: nextChannels });
     return nextChannels;
   });
-
+};
 export const getUsername = () =>
   browser.storage.local.get("username").then((storage) => {
     if (!storage.username) {
@@ -47,3 +57,30 @@ export const getUsername = () =>
 
 export const updateUsername = (username: string) =>
   browser.storage.local.set({ username });
+
+export const getToken = () =>
+  browser.storage.local.get("token").then((storage) => {
+    return storage.token + "";
+  });
+
+export const clearChannels = async () => {
+  const channels = await getChannels();
+
+  channels.map((channelID) => {
+    deleteChannel(channelID);
+  });
+};
+
+export const resetStorage = async () => {
+  return Promise.all([
+    clearChannels(),
+    updateUsername(""),
+    browser.storage.local.set({ login: "" }),
+  ])
+    .then(() => true)
+    .catch(() => false);
+};
+
+export const pageReload = () => {
+  browser.tabs.reload();
+};

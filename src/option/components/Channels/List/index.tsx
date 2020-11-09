@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "./style";
-import { getChannels, deleteChannel } from "~/option/util";
+import { getChannels, deleteChannel, addChannel } from "~/option/util";
 import DeleteButton from "./DeleteButton";
 import AddButton from "./AddButton";
 export type Props = {
@@ -11,16 +11,43 @@ const Component: React.FC<Props> = (props) => {
   const { className } = props;
   const [channels, setChannels] = React.useState<null | string[]>(null);
   const [error, setError] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
   const handleDeleteChannel = (channelID: string) => () => {
-    deleteChannel(channelID).then(setChannels);
+    setLoading(true);
+    deleteChannel(channelID)
+      .then((channels) => {
+        setError("");
+        setChannels(channels);
+      })
+      .catch(() => {
+        setError("通信エラー");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  const handleAddChannel = (channelID: string) => {
+    setLoading(true);
+    addChannel(channelID)
+      .then((channels) => {
+        setError("");
+        setChannels(channels);
+      })
+      .catch(() => {
+        setError("通信エラー");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   React.useEffect(() => {
     getChannels()
       .then(setChannels)
       .catch(() => {
-        setError("登録チャンネルの取得に失敗しました。");
+        setError("チャンネルの取得に失敗しました。");
       });
   }, []);
   const mapChannels =
@@ -38,7 +65,8 @@ const Component: React.FC<Props> = (props) => {
       {error && <div>{error}</div>}
       <ul>{mapChannels}</ul>
       {empChannel}
-      <AddButton onChange={setChannels} />
+      <AddButton onSubmit={handleAddChannel} />
+      {loading && "通信中..."}
     </div>
   );
 };
