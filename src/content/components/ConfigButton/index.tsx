@@ -9,7 +9,7 @@ type Props = {
 const Component: React.FC<Props> = (props) => {
   const { className } = props;
   const handleClick = () => {
-    browser.runtime.sendMessage("newConfig");
+    browser.runtime.sendMessage({ type: "newConfig" });
   };
   return (
     <div onClick={handleClick} className={className}>

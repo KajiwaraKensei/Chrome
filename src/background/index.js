@@ -1,4 +1,5 @@
-const SENDER_ID = "909230697204";
+import { checkURL } from "~/utility";
+const SENDER_ID = "577226677636";
 
 const refreshToken = async () => {
   const tokenParams = {
@@ -36,22 +37,34 @@ chrome.instanceID.onTokenRefresh.addListener(() => {
 });
 chrome.gcm.onMessage.addListener((res) => {
   console.log(res);
-  const message = res.body.data || '不明'
+  const message = res.data.message || "不明";
+  const to = res.data.to || "guest";
+
+  if (checkURL(message)) {
+    chrome.tabs.create({ url: message });
+    return;
+  }
   new Notification('"onMessage" event fired', {
-    message,
+    body: to + "から: " + message,
   });
 });
 
-chrome.runtime.onConnect.addListener(function(port){
-  port.onMessage.addListener(function(request){
+chrome.runtime.onConnect.addListener(function (port) {
+  port.onMessage.addListener(function (request) {
     var path = request.type;
     console.log("back", path);
-    port.postMessage({data: request.path});
+    port.postMessage({ data: request.path });
   });
 });
-chrome.runtime.onMessage.addListener(function(message){
-  switch (message){
+
+chrome.runtime.onMessage.addListener(function (message) {
+  switch (message.type) {
     case "newConfig":
-      chrome.tabs.create({ url: "chrome://extensions/?options=" + chrome.runtime.id }); 
+      chrome.tabs.create({
+        url: "chrome://extensions/?options=" + chrome.runtime.id,
+      });
+      break;
+    case "newTab":
+      chrome.tabs.create({ url: message.url });
   }
 });

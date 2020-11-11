@@ -1,5 +1,5 @@
 import React from "react";
-import { getUsername, updateUsername } from "~/option/util";
+import { updateUsername, getUsername } from "~/utility";
 import styled from "./style";
 export type Props = {
   className?: string;

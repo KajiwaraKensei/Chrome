@@ -18,4 +18,5 @@ export default (Component: React.FC<Props>) => styled(Component)<StyleProps>`
   background-color: #99d;
   border-radius: 50%;
   ${flexCenter}
+  cursor: pointer;
 `;

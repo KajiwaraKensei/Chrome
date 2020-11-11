@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "./style";
-import { resetStorage, pageReload } from "~/option/util";
+import { resetStorage, pageReload } from "~/utility";
 export type Props = {
   className?: string;
 };

@@ -2,7 +2,7 @@
   "scripts": {
     "build": "npm run fmt && webpack",
     "watch": "webpack -w",
-    "fmt": "prettier --write \"src/**/*.ts*\""
+    "fmt": "prettier --write \"src/**/*.**s*\""
   },
   "devDependencies": {
     "ts-loader": "^8.0.7",
@@ -17,6 +17,8 @@
     "@types/react-dom": "^16.9.9",
     "@types/styled-components": "^5.1.4",
     "axios": "^0.21.0",
+    "firebase": "^8.0.1",
+    "firebase-admin": "^9.3.0",
     "prettier": "^2.1.2",
     "qs": "^6.9.4",
     "react": "^17.0.1",

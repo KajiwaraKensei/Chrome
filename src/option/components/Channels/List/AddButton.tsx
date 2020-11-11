@@ -1,5 +1,5 @@
 import React from "react";
-import { checkChannelID } from "~/option/util";
+import { checkChannelID } from "~/utility/channel";
 import { addStyled } from "./style";
 export type Props = {
   className?: string;
