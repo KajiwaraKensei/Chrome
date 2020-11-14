@@ -10,3 +10,7 @@ export const getNotificationConfig = () =>
 
 export const setNotificationConfig = (notificationConfig: boolean) =>
   browser.storage.local.set({ notificationConfig });
+
+export const resetNotification = async () => {
+  await setNotificationConfig(false);
+};

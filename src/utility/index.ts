@@ -1,6 +1,6 @@
 import { browser } from "webextension-polyfill-ts";
 import { clearChannels } from "./channel";
-
+import { resetNotification } from "./notification";
 export const getToken = async () =>
   browser.storage.local.get("token").then((storage) => {
     return storage.token + "";
@@ -10,6 +10,7 @@ export const resetStorage = async () => {
   return Promise.all([
     clearChannels(),
     updateUsername(""),
+    resetNotification(),
     browser.storage.local.set({ login: "" }),
   ])
     .then(() => true)

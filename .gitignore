@@ -3,7 +3,7 @@
 .vscode
 .env
 *.log
-
+dist/
 # Compiled JavaScript files
 */*.js
 **/*.js.map
