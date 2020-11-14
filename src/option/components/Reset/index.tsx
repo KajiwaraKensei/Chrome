@@ -1,11 +1,11 @@
 import React from "react";
-import styled from "./style";
+import styled, { ResetButton } from "./style";
 import { resetStorage, pageReload } from "~/utility";
-export type Props = {
-  className?: string;
-};
+import ResetIcon from "@material-ui/icons/RotateLeft";
+export type Props = {};
 
 const Component: React.FC<Props> = (props) => {
+  const {} = props;
   const [loading, setLoading] = React.useState(false);
   const doReset = () => {
     setLoading(true);
@@ -18,12 +18,19 @@ const Component: React.FC<Props> = (props) => {
         pageReload();
       });
   };
-  const { className } = props;
+
   return (
-    <div className={className}>
-      <h2>データリセット</h2>
-      {loading && "クリア中..."}
-      <button onClick={doReset}>do reset</button>
+    <div {...props}>
+      <h2 onClick={doReset}>
+        データリセット
+        <ResetButton className="reset_icon" loading={loading.toString()}>
+          <ResetIcon
+            className="reset_svg"
+            style={{ fontSize: 15, color: "#fff" }}
+          />
+        </ResetButton>
+      </h2>
+      {loading && <div>クリア中...</div>}
     </div>
   );
 };

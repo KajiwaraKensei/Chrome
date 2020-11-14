@@ -1,5 +1,6 @@
 import React from "react";
 import { deleteStyled } from "./style";
+import BackspaceIcon from "@material-ui/icons/Backspace";
 export type Props = {
   className?: string;
   onClick?: () => void;
@@ -12,7 +13,7 @@ const Component: React.FC<Props> = (props) => {
   };
   return (
     <button className={className} onClick={handleClick}>
-      delete
+      <BackspaceIcon fontSize="small" color="inherit" />
     </button>
   );
 };

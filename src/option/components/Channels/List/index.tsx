@@ -19,6 +19,7 @@ const Component: React.FC<Props> = (props) => {
   const [error, setError] = React.useState("");
   const [loading, setLoading] = React.useState(false);
   const [selectChannelID, setSelectChannelID] = React.useState("");
+
   const handleDeleteChannel = (channelID: string) => () => {
     setLoading(true);
     deleteChannel(channelID)
@@ -71,22 +72,33 @@ const Component: React.FC<Props> = (props) => {
     channels.map((channel) => (
       <li
         key={"channel_" + channel}
+        className={channel === selectChannelID ? "select" : "not_select"}
         onClick={handleSetSelectChannelID(channel)}
       >
-        {channel === selectChannelID && "✔︎"} {channel}{" "}
-        <DeleteButton onClick={handleDeleteChannel(channel)} />
+        {channel}
+        {channel === selectChannelID && <span>selected</span>}
+        <div className="delete_button">
+          <DeleteButton onClick={handleDeleteChannel(channel)} />
+        </div>
       </li>
     ));
 
   const empChannel = channels && channels.length === 0 && <div>登録なし</div>;
+
   return (
     <div className={className}>
-      <h2>チャンネル一覧</h2>
+      <div>
+        <h2>チャンネル一覧</h2>
+        <div className="channel_list">
+          <ul>
+            {mapChannels}
+            {empChannel}
+            {loading && <li>通信中...</li>}
+          </ul>
+          <AddButton onSubmit={handleAddChannel} />
+        </div>
+      </div>
       {error && <div>{error}</div>}
-      <ul>{mapChannels}</ul>
-      {empChannel}
-      <AddButton onSubmit={handleAddChannel} />
-      {loading && "通信中..."}
     </div>
   );
 };
