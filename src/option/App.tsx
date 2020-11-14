@@ -1,8 +1,13 @@
+// ______________________________________________________
+//
 import React from "react";
 import { List, DisplayName } from "./components/Channels";
 import Reset from "./components/Reset";
 import NotificationConfirmation from "./components/NotificationConfirmation";
 import styled from "styled-components";
+
+// ______________________________________________________
+//
 type Props = {
   className?: string;
 };
@@ -19,6 +24,8 @@ const Component: React.FC<Props> = (props) => {
   );
 };
 
+// ______________________________________________________
+//
 export default styled(Component)`
   max-width: 40rem;
   margin: 0 auto;

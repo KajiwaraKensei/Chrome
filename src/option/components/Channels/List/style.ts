@@ -1,9 +1,11 @@
+// ______________________________________________________
+// スタイル
 import { FC } from "react";
 import styled, { css } from "styled-components";
+import { Props } from ".";
 
 // ______________________________________________________
-//
-import { Props } from ".";
+// default
 type StyledProps = {};
 
 export default (component: FC<Props>) => styled(component)<StyledProps>`
@@ -97,7 +99,7 @@ export default (component: FC<Props>) => styled(component)<StyledProps>`
 `;
 
 // ______________________________________________________
-//
+// deleteスタイル
 import { Props as DeleteProps } from "./DeleteButton";
 type DeleteStyledProps = {};
 
@@ -111,7 +113,7 @@ export const deleteStyled = (component: FC<DeleteProps>) =>
   `;
 
 // ______________________________________________________
-//
+// 追加ボタンのスタイル
 import { Props as AddProps } from "./AddButton";
 type AddPropsProps = {};
 
@@ -139,6 +141,8 @@ export const addStyled = (component: FC<AddProps>) =>
       color: #abd;
     }
   `;
+
+// 共通ボタンのスタイル
 const addStyle = css`
   cursor: pointer;
   color: #fff;

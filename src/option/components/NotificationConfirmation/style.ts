@@ -1,14 +1,15 @@
 // ______________________________________________________
-//
+//スタイル
 import { Props } from ".";
 import { FC } from "react";
-import styled, { keyframes, css } from "styled-components";
+import styled from "styled-components";
 import Switch from "@material-ui/core/Switch";
 import { withStyles, Theme, createStyles } from "@material-ui/core/styles";
 
 // ______________________________________________________
-//
+// componentのスタイル
 type StyledProps = {};
+
 export default (component: FC<Props>) => styled(component)<StyledProps>`
   color: #fff;
   & > h2 {
@@ -28,8 +29,9 @@ export default (component: FC<Props>) => styled(component)<StyledProps>`
 `;
 
 // ______________________________________________________
-//
+// toggle_button
 type NotificationProps = {};
+
 export const NotificationButton = styled.div<NotificationProps>`
   margin-left: 0rem;
   display: block;

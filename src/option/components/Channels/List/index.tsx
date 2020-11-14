@@ -1,3 +1,5 @@
+// ______________________________________________________
+// チャンネルリスト
 import React from "react";
 import styled from "./style";
 import {
@@ -9,19 +11,18 @@ import {
 } from "~/utility/channel";
 import DeleteButton from "./DeleteButton";
 import AddButton from "./AddButton";
-export type Props = {
-  className?: string;
-};
+
+export type Props = {};
 
 const Component: React.FC<Props> = (props) => {
-  const { className } = props;
-  const [channels, setChannels] = React.useState<null | string[]>(null);
-  const [error, setError] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
-  const [selectChannelID, setSelectChannelID] = React.useState("");
+  const [channels, setChannels] = React.useState<null | string[]>(null); // 登録チャンネルリスト
+  const [error, setError] = React.useState(""); // エラーメッセージ
+  const [loading, setLoading] = React.useState(false); // ロード中か true:ロード中
+  const [selectChannelID, setSelectChannelID] = React.useState(""); // 選択中のチャンネル
 
+  // チャンネル削除処理
   const handleDeleteChannel = (channelID: string) => () => {
-    setLoading(true);
+    setLoading(true); // ロード中に
     deleteChannel(channelID)
       .then((channels) => {
         setError("");
@@ -31,12 +32,13 @@ const Component: React.FC<Props> = (props) => {
         setError("通信エラー");
       })
       .finally(() => {
-        setLoading(false);
+        setLoading(false); // ロード終了
       });
   };
 
+  // チャンネル追加処理
   const handleAddChannel = (channelID: string) => {
-    setLoading(true);
+    setLoading(true); // ロード中に
     addChannel(channelID)
       .then((channels) => {
         setError("");
@@ -46,14 +48,17 @@ const Component: React.FC<Props> = (props) => {
         setError("通信エラー");
       })
       .finally(() => {
-        setLoading(false);
+        setLoading(false); // ロード終了
       });
   };
+
+  // チャンネル選択処理
   const handleSetSelectChannelID = (channelID: string) => () => {
     setSelectChannel(channelID);
     setSelectChannelID(channelID);
   };
 
+  // Chrome から初期値を読み込み
   React.useEffect(() => {
     getSelectChannel()
       .then(setSelectChannelID)
@@ -67,6 +72,7 @@ const Component: React.FC<Props> = (props) => {
       });
   }, []);
 
+  // channels 展開
   const mapChannels =
     channels &&
     channels.map((channel) => (
@@ -83,12 +89,13 @@ const Component: React.FC<Props> = (props) => {
       </li>
     ));
 
+  // 登録がない場合
   const empChannel = channels && channels.length === 0 && <div>登録なし</div>;
 
   return (
-    <div className={className}>
+    <div {...props}>
       <div>
-        <h2>チャンネル一覧</h2>
+        <h2>チャンネル</h2>
         <div className="channel_list">
           <ul>
             {mapChannels}

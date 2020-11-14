@@ -1,7 +1,11 @@
 import { Props } from ".";
 import { FC } from "react";
 import styled, { keyframes, css } from "styled-components";
+
+// ______________________________________________________
+// componentのスタイル
 type StyledProps = {};
+
 export default (component: FC<Props>) => styled(component)<StyledProps>`
   color: #fff;
   & > h2 {
@@ -24,6 +28,13 @@ export default (component: FC<Props>) => styled(component)<StyledProps>`
   }
 `;
 
+// ______________________________________________________
+// リセットボタン
+type ResetProps = {
+  loading?: string;
+};
+
+// animation 回転
 const rotateAnimation = keyframes`
   from {
     transform: rotate(0deg);
@@ -34,9 +45,6 @@ const rotateAnimation = keyframes`
   }
 `;
 
-type ResetProps = {
-  loading?: string;
-};
 export const ResetButton = styled.div<ResetProps>`
   margin-left: 0rem;
   display: block;

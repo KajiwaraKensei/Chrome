@@ -1,26 +1,30 @@
+// ______________________________________________________
+// 共有する時に確認するか？
 import React from "react";
 import styled, { NotificationButton, AntSwitch } from "./style";
 import {
   setNotificationConfig,
   getNotificationConfig,
-} from "~/utility/notification";
+} from "~/utility/notification"; // chromeAPI(主に通知)
+
 export type Props = {};
 
 const Component: React.FC<Props> = (props) => {
-  const {} = props;
-  const [notification, setNotification] = React.useState(false);
+  const { } = props;
+  const [notification, setNotification] = React.useState(false); // 確認のフラグ true:確認する
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNotification(event.target.checked);
+    setNotification(event.target.checked); // chrome に保存
     setNotificationConfig(event.target.checked);
   };
 
   const handleClick = () => {
-    setNotificationConfig(!notification);
+    setNotificationConfig(!notification); // chrome に保存
     setNotification(!notification);
   };
 
   React.useEffect(() => {
-    getNotificationConfig().then(setNotification);
+    getNotificationConfig().then(setNotification); // フラグ取得
   });
 
   return (

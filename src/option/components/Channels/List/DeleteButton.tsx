@@ -1,9 +1,12 @@
+// ______________________________________________________
+// 削除ボタン
 import React from "react";
 import { deleteStyled } from "./style";
 import BackspaceIcon from "@material-ui/icons/Backspace";
+
 export type Props = {
   className?: string;
-  onClick?: () => void;
+  onClick?: () => void; // クリック時のコールバック
 };
 
 const Component: React.FC<Props> = (props) => {

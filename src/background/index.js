@@ -1,4 +1,5 @@
-import { checkURL } from "~/utility";
+import { clearChannels, getChannels } from "../utility/channel";
+import { setChannel } from "../utility/CloudFunctions";
 const SENDER_ID = "577226677636";
 
 const refreshToken = async () => {
@@ -15,6 +16,9 @@ const refreshToken = async () => {
       }
     });
   });
+  const oldToken = await chrome.storage.local
+    .get("token")
+    .then((storage) => storage.token);
   await new Promise((resolve, reject) => {
     chrome.storage.local.set({ token }, () => {
       if (chrome.runtime.lastError) {
@@ -24,15 +28,18 @@ const refreshToken = async () => {
       }
     });
   });
+  if (oldToken !== token && oldToken !== undefined) {
+    await clearChannels();
+    const channels = await getChannels();
+    for (let channel of channels) {
+      await setChannel(channel);
+    }
+  }
 };
 chrome.runtime.onInstalled.addListener((details) => {
-  new Notification('"onInstalled" event fired', {
-    body: JSON.stringify(details),
-  });
   refreshToken();
 });
 chrome.instanceID.onTokenRefresh.addListener(() => {
-  new Notification('"onTokenRefresh" event fired');
   refreshToken();
 });
 chrome.gcm.onMessage.addListener((res) => {

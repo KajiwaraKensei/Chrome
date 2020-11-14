@@ -1,27 +1,33 @@
+// ______________________________________________________
+// ユーザー名変更
 import React from "react";
 import { updateUsername, getUsername } from "~/utility";
 import styled from "./style";
-import EditIcon from "@material-ui/icons/Edit";
-import SaveAltIcon from "@material-ui/icons/SaveAlt";
+import EditIcon from "@material-ui/icons/Edit"; // SVGアイコン
+import SaveAltIcon from "@material-ui/icons/SaveAlt"; // SVGアイコン
+
 export type Props = {
-  className?: string;
 };
 
 const Component: React.FC<Props> = (props) => {
-  const { className } = props;
-  const [userName, setUserName] = React.useState("");
-  const [originName, setOriginName] = React.useState("");
-  const [toggle, setToggle] = React.useState(false);
+  const [userName, setUserName] = React.useState(""); // ユーザー名
+  const [originName, setOriginName] = React.useState(""); // 変更前のユーザー名
+  const [toggle, setToggle] = React.useState(false); // 変更モードフラグ true: 変更モード
+
   React.useEffect(() => {
+    // ユーザー名取得
     getUsername().then((username) => {
       setUserName(username);
       setOriginName(username);
     });
   }, []);
+
+  // onChangeイベント
   const handleChangeName = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(event.target.value);
   };
 
+  // 保存処理
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
     updateUsername(userName)
@@ -32,6 +38,8 @@ const Component: React.FC<Props> = (props) => {
         setToggle(false);
       });
   };
+
+  // 変更時Component
   const EditComponent = (
     <form onSubmit={handleSave} className="edit_name">
       <input
@@ -47,6 +55,8 @@ const Component: React.FC<Props> = (props) => {
       )}
     </form>
   );
+
+  // 表示のみ
   const NoEditComponent = (
     <span className="user_name">
       {originName}
@@ -59,8 +69,9 @@ const Component: React.FC<Props> = (props) => {
       </button>
     </span>
   );
+
   return (
-    <div className={className}>
+    <div {...props}>
       <h2>ユーザー名 {toggle ? EditComponent : NoEditComponent}</h2>
     </div>
   );

@@ -1,7 +1,13 @@
+// ______________________________________________________
+// スタイル
 import { Props } from ".";
 import { FC } from "react";
 import styled from "styled-components";
+
+// ______________________________________________________
+// componentのスタイル
 type StyledProps = {};
+
 export default (component: FC<Props>) => styled(component)<StyledProps>`
   border: 1px solid #fff;
   border-radius: 0.3rem;

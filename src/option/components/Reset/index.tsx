@@ -1,21 +1,26 @@
+// ______________________________________________________
+// リセットボタン
 import React from "react";
 import styled, { ResetButton } from "./style";
-import { resetStorage, pageReload } from "~/utility";
-import ResetIcon from "@material-ui/icons/RotateLeft";
+import { resetStorage, pageReload } from "~/utility"; // chromeAPI, cloudFunctions
+import ResetIcon from "@material-ui/icons/RotateLeft"; // SVGアイコン
+
 export type Props = {};
 
 const Component: React.FC<Props> = (props) => {
   const {} = props;
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(false); // true: ロード中
+
+  // リセット処理
   const doReset = () => {
-    setLoading(true);
+    setLoading(true); // ロード開始
     resetStorage()
       .then((result) => {
         console.log(result ? "クリアしました" : "error");
       })
       .finally(() => {
-        setLoading(false);
-        pageReload();
+        setLoading(false); // ロード終了
+        pageReload(); // ページリロード
       });
   };
 
