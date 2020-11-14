@@ -40,13 +40,7 @@ chrome.gcm.onMessage.addListener((res) => {
   const message = res.data.message || "不明";
   const to = res.data.to || "guest";
 
-  if (checkURL(message)) {
-    chrome.tabs.create({ url: message });
-    return;
-  }
-  new Notification('"onMessage" event fired', {
-    body: to + "から: " + message,
-  });
+  chrome.tabs.create({ url: message });
 });
 
 chrome.runtime.onConnect.addListener(function (port) {

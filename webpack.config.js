@@ -1,12 +1,12 @@
 var path = require('path');
 module.exports = {
   entry: {
-    'content/script': "./src/content/index.tsx",
-    'option/script': "./src/option/index.tsx",
-    'background/script': "./src/background/index.js",
+    'content': "./src/content/index.tsx",
+    'option': "./src/option/index.tsx",
+    'background': "./src/background/index.js",
   },
   output: {
-    path: __dirname,
+    path: `${__dirname}/dist`,
     filename: "[name].js",
   },
   module: {
