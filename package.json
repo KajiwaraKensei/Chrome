@@ -1,8 +1,9 @@
 {
   "scripts": {
-    "build": "npm run fmt && webpack",
+    "build": "npm run fmt && webpack && npm run zip",
     "watch": "webpack -w",
-    "fmt": "prettier --write \"src/**/*.**s*\""
+    "fmt": "prettier --write \"src/**/*.**s*\"",
+    "zip": "sh zip.sh"
   },
   "devDependencies": {
     "ts-loader": "^8.0.7",

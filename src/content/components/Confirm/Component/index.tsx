@@ -1,0 +1,74 @@
+import React from "react";
+import styled from "./style";
+import Bird from "./SVG/bird";
+import SnowMan from "./SVG/SnowMan";
+import Blooming from "./SVG/Blooming";
+import Switch from "@material-ui/core/Switch";
+import {
+  setNotificationConfig,
+  getNotificationConfig,
+} from "~/utility/notification"; // chromeAPI(主に通知)
+
+export type ConfirmType = "snow" | "bird" | "blooming";
+export type Props = {
+  className?: string;
+  to: string;
+  url: string;
+  type?: ConfirmType;
+  onChange?: (result: boolean) => void;
+};
+
+const Component: React.FC<Props> = (props) => {
+  const { className, url, to, type, onChange } = props;
+  const [notification, setNotification] = React.useState(false);
+  React.useEffect(() => {
+    getNotificationConfig().then(setNotification);
+  }, []);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setNotification(event.target.checked);
+    setNotificationConfig(event.target.checked);
+  };
+
+  const handleClick = (result: boolean) => () => {
+    onChange && onChange(result);
+  };
+  return (
+    <div className={className}>
+      <div className="head_loco">{url}</div>
+      <div className="body_loco">
+        {(type === "bird" || type === undefined) && <Bird />}
+        {type === "snow" && <SnowMan />}
+        <div>
+          <p>
+            <span className="name_loco">{to}</span>
+            がページを共有しています。開きますか？
+          </p>
+          <p className="notification_loco">
+            <label htmlFor="notification">通知で毎回確認しない</label>
+            <Switch
+              id="notification"
+              size="small"
+              checked={notification}
+              onChange={handleChange}
+              color="primary"
+            />
+          </p>
+        </div>
+
+        {type === "blooming" && <Blooming />}
+      </div>
+
+      <div className="footer_loco">
+        <button className="no_loco" onClick={handleClick(false)}>
+          cancel
+        </button>
+        <button className="yes_loco" onClick={handleClick(true)}>
+          Open
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default styled(Component);

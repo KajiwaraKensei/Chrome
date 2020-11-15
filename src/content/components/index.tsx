@@ -5,7 +5,6 @@ import Character from "./Character";
 import CloseButton from "./CloseButton";
 import ConfigButton from "./ConfigButton";
 import SendButton from "./SendButton";
-import { getToday } from "~/content/util";
 type Props = {
   className?: string;
 };
@@ -13,11 +12,7 @@ export const width = 100;
 
 const Component: React.FC<Props> = (props) => {
   const port = browser.runtime.connect();
-  browser.storage.local.get("login").then(({ login }) => {
-    const today = getToday();
-    if (login === today) {
-    }
-  });
+  browser.storage.local.get("login").then(({ login }) => {});
   const [isDisplay, setISDisplay] = React.useState(true);
   const [toggle, setToggle] = React.useState(false);
   return (

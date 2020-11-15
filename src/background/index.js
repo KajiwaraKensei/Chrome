@@ -54,7 +54,6 @@ chrome.gcm.onMessage.addListener(async (res) => {
   }
   chrome.tabs.query({ active: true }, (result) => {
     result.forEach((tab) => {
-      tab.id;
       chrome.tabs.sendMessage(tab.id, { type: "onMessage", url, to });
     });
   });

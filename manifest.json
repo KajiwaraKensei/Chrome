@@ -1,7 +1,7 @@
 {
   "name": "loco",
   "version": "1.0",
-  "description": "Build an Extension!",
+  "description": "tabbed sharing",
   "permissions": [ "storage",  "gcm", "notifications"],
   "background": {
     "scripts": ["dist/background.js"],

@@ -15,7 +15,6 @@ type Props = {
 const Component: React.FC<Props> = (props) => {
   return (
     <div className={props.className}>
-      <h1>Config</h1>
       <DisplayName />
       <List />
       <NotificationConfirmation />
@@ -37,7 +36,6 @@ export default styled(Component)`
     margin: 0;
   }
   background-color: #000;
-  min-height: 100vh;
   * {
     box-sizing: border-box;
   }
