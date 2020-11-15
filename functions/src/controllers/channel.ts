@@ -71,7 +71,7 @@ export const sendMessage = async (
   const token: unknown = req.query.token;
   const db = admin.firestore();
   const sendMessage: string = req.query.message + "";
-  const to = req.query.to + "" || "guest";
+  const to = (req.query.to as string) || "guest";
   const userRef = db
     .collection(CHANNEL)
     .doc(typeof channelID === "string" ? channelID : "another999");

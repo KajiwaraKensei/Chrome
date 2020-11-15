@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "./style";
-import { getChannelTokens } from "~/utility/CloudFunctions";
+import { sendMessage } from "~/utility/CloudFunctions";
 import { getSelectChannel } from "~/utility/channel";
 type Props = {
   className?: string;
@@ -13,13 +13,9 @@ const Component: React.FC<Props> = (props) => {
   const handleClick = () => {
     setLoading(true);
     getSelectChannel()
-      .then((id) => getChannelTokens(id, location.href))
-      .then((tokens) => {
-        console.log(tokens);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
+      .then((id) => sendMessage(id, location.href))
+      .then((tokens) => {})
+      .catch((err) => {})
       .finally(() => {
         setLoading(false);
       });

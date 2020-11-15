@@ -6,8 +6,7 @@ import styled from "./style";
 import EditIcon from "@material-ui/icons/Edit"; // SVGアイコン
 import SaveAltIcon from "@material-ui/icons/SaveAlt"; // SVGアイコン
 
-export type Props = {
-};
+export type Props = {};
 
 const Component: React.FC<Props> = (props) => {
   const [userName, setUserName] = React.useState(""); // ユーザー名

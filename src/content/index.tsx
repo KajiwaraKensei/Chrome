@@ -2,6 +2,7 @@ import React from "react";
 import ReactDom from "react-dom";
 import App from "./App";
 import Firebase from "firebase/app";
+import "./MessageAPI";
 
 Firebase.initializeApp({
   apiKey: "AIzaSyDKeTd2arQLi_T1xbBJlVnC6UxmFQZGW_M",

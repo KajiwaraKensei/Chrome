@@ -10,7 +10,7 @@ import {
 export type Props = {};
 
 const Component: React.FC<Props> = (props) => {
-  const { } = props;
+  const {} = props;
   const [notification, setNotification] = React.useState(false); // 確認のフラグ true:確認する
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

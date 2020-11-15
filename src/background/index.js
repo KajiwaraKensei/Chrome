@@ -1,5 +1,8 @@
+import { browser } from "webextension-polyfill-ts";
 import { clearChannels, getChannels } from "../utility/channel";
 import { setChannel } from "../utility/CloudFunctions";
+import { getNotificationConfig } from "../utility/notification";
+
 const SENDER_ID = "577226677636";
 
 const refreshToken = async () => {
@@ -16,7 +19,7 @@ const refreshToken = async () => {
       }
     });
   });
-  const oldToken = await chrome.storage.local
+  const oldToken = await browser.storage.local
     .get("token")
     .then((storage) => storage.token);
   await new Promise((resolve, reject) => {
@@ -42,12 +45,19 @@ chrome.runtime.onInstalled.addListener((details) => {
 chrome.instanceID.onTokenRefresh.addListener(() => {
   refreshToken();
 });
-chrome.gcm.onMessage.addListener((res) => {
-  console.log(res);
-  const message = res.data.message || "不明";
+chrome.gcm.onMessage.addListener(async (res) => {
+  const url = res.data.message || "不明";
   const to = res.data.to || "guest";
-
-  chrome.tabs.create({ url: message });
+  if (!(await getNotificationConfig())) {
+    chrome.tabs.create({ url: url });
+    return;
+  }
+  chrome.tabs.query({ active: true }, (result) => {
+    result.forEach((tab) => {
+      tab.id;
+      chrome.tabs.sendMessage(tab.id, { type: "onMessage", url, to });
+    });
+  });
 });
 
 chrome.runtime.onConnect.addListener(function (port) {

@@ -36,3 +36,7 @@ export const checkURL = (url: string) => {
   const pattern1 = /^(https|http):\/\/([a-z]{1,}\.|)(qiita\.com)(\/(.*)|\?(.*)|$)$/g;
   return pattern1.test(url);
 };
+
+export const openNewTab = (url: string) => {
+  browser.runtime.sendMessage({ type: "newTab", url });
+};

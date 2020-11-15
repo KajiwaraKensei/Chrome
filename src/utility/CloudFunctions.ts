@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from "qs";
-import { getToken } from ".";
+import { getToken, getUsername } from ".";
 
 const BASE_URL =
   "https://us-central1-extension-chrome-gotcha.cloudfunctions.net/api/";
@@ -29,14 +29,13 @@ export const deleteChannel = async (channelID: string) => {
     .catch(() => false);
 };
 
-export const getChannelTokens = async (channelID: string, message: string) => {
+export const sendMessage = async (channelID: string, message: string) => {
   const token = await getToken();
-  const query = qs.stringify({ channelID, token, message });
+  const userName = await getUsername();
+  const query = qs.stringify({ channelID, token, message, to: userName });
 
   return axios
     .get(BASE_URL + "channel/sendMessage?" + query)
-    .then((res) => {
-      return res.data.tokens as string[];
-    })
+    .then((res) => {})
     .catch(() => false);
 };
