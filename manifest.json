@@ -11,7 +11,7 @@
   "browser_action": {
     "default_popup": "popup/index.html",
     "default_icon": {
-      "32": "images/i-bui.png"
+      "32": "images/image.png"
     }
   },
  "icons": {

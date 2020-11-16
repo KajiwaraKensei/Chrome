@@ -5,7 +5,7 @@ import { FC } from "react";
 import styled, { keyframes } from "styled-components";
 
 // ______________________________________________________
-// 
+//
 type StyledProps = {};
 
 export default (component: FC<Props>) => styled(component)<StyledProps>`

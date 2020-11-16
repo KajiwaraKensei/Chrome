@@ -3,10 +3,7 @@
 import React from "react";
 import styled from "./style";
 import SettingsIcon from "@material-ui/icons/Settings";
-import {
-  getChannels,
-  getSelectChannel,
-} from "~/utility/channel";
+import { getChannels, getSelectChannel } from "~/utility/channel";
 import { sendMessage } from "~/utility/CloudFunctions";
 import { browser } from "webextension-polyfill-ts";
 

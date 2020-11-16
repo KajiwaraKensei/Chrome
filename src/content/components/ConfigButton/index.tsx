@@ -5,7 +5,7 @@ import { browser } from "webextension-polyfill-ts";
 import styled from "./style";
 
 // ______________________________________________________
-// 
+//
 type Props = {
   className?: string;
 };

@@ -211,7 +211,7 @@
   ${({loading:e})=>"true"===e&&me`
       animation: ${rt} 2s linear infinite;
     `}
-`;var it=n(4779),at=_e((e=>{const{}=e,[n,r]=t.useState(!1);return t.createElement("div",Object.assign({},e),t.createElement("h2",{onClick:()=>{r(!0),De(void 0,void 0,void 0,(function*(){return Promise.all([qe(),Ue(""),Ie(void 0,void 0,void 0,(function*(){yield Ze(!1)})),Te.browser.storage.local.set({login:""})]).then((()=>!0)).catch((()=>!1))})).then((e=>{console.log(e?"クリアしました":"error")})).finally((()=>{r(!1),Te.browser.tabs.reload()}))}},"データリセット",t.createElement(ot,{className:"reset_icon",loading:n.toString()},t.createElement(it.Z,{className:"reset_svg",style:{fontSize:15,color:"#fff"}}))),n&&t.createElement("div",null,"クリア中..."))}))`
+`;var it=n(4779),at=_e((e=>{const{}=e,[n,r]=t.useState(!1);return t.createElement("div",Object.assign({},e),t.createElement("h2",{onClick:()=>{r(!0),De(void 0,void 0,void 0,(function*(){return Promise.all([qe(),Ue(""),Ie(void 0,void 0,void 0,(function*(){yield Ze(!0)})),Te.browser.storage.local.set({login:""})]).then((()=>!0)).catch((()=>!1))})).then((e=>{console.log(e?"クリアしました":"error")})).finally((()=>{r(!1),Te.browser.tabs.reload()}))}},"データリセット",t.createElement(ot,{className:"reset_icon",loading:n.toString()},t.createElement(it.Z,{className:"reset_svg",style:{fontSize:15,color:"#fff"}}))),n&&t.createElement("div",null,"クリア中..."))}))`
   color: #fff;
   & > h2 {
     display: flex;

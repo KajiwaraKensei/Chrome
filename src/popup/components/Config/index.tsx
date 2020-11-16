@@ -6,7 +6,7 @@ import LaunchRoundedIcon from "@material-ui/icons/LaunchRounded";
 import { browser } from "webextension-polyfill-ts";
 
 // ______________________________________________________
-// 
+//
 export type Props = {
   className?: string;
 };

@@ -9,16 +9,15 @@ import ConfigButton from "./ConfigButton";
 import SendButton from "./SendButton";
 
 // ______________________________________________________
-// 
+//
 type Props = {
   className?: string;
 };
 export const width = 100;
 
 // ______________________________________________________
-// 
+//
 const Component: React.FC<Props> = (props) => {
-
   const [isDisplay, setISDisplay] = React.useState(true);
   const [toggle, setToggle] = React.useState(false);
   return (

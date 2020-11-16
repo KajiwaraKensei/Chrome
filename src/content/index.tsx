@@ -14,5 +14,5 @@ newElement.setAttribute("id", ROOT_ID);
 document.body.insertBefore(newElement, document.body.lastChild);
 
 // ______________________________________________________
-// React 
+// React
 ReactDom.render(<App />, document.getElementById(ROOT_ID));

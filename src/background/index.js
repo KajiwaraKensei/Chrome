@@ -7,7 +7,6 @@ import { getNotificationConfig } from "../utility/notification";
 
 const SENDER_ID = "577226677636";
 
-
 const refreshToken = async () => {
   const tokenParams = {
     authorizedEntity: SENDER_ID,
@@ -65,7 +64,6 @@ chrome.gcm.onMessage.addListener(async (res) => {
     });
   });
 });
-
 
 // content とのやりとり
 chrome.runtime.onConnect.addListener(function (port) {

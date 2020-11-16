@@ -5,10 +5,9 @@ import qs from "qs";
 import { getToken, getUsername } from ".";
 
 // ______________________________________________________
-// 
+//
 const BASE_URL =
   "https://us-central1-extension-chrome-gotcha.cloudfunctions.net/api/";
-
 
 // ______________________________________________________
 // チャンネル登録

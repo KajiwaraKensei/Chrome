@@ -28,7 +28,6 @@ const Component: React.FC<Props> = ({ className }) => {
     }
   };
 
-
   React.useEffect(() => {
     // ログインの確認
     checkLogin();

@@ -12,7 +12,7 @@ import {
 } from "~/utility/notification"; // chromeAPI(主に通知)
 
 // ______________________________________________________
-// 
+//
 export type ConfirmType = "snow" | "bird" | "blooming";
 export type Props = {
   className?: string;
@@ -23,7 +23,7 @@ export type Props = {
 };
 
 // ______________________________________________________
-// 
+//
 const Component: React.FC<Props> = (props) => {
   const { className, url, to, type, onChange } = props;
   const [notification, setNotification] = React.useState(false); // 通知を受け取るかの設定フラグ

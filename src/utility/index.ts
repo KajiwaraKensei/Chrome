@@ -1,5 +1,5 @@
 // ______________________________________________________
-// 
+//
 import { browser } from "webextension-polyfill-ts";
 import { clearChannels } from "./channel";
 import { resetNotification } from "./notification";
@@ -70,7 +70,7 @@ export const getToday = () => {
 };
 
 // ______________________________________________________
-// 
+//
 export const types: ("snow" | "bird" | "blooming")[] = [
   "snow",
   "bird",
@@ -99,7 +99,7 @@ export const checkLogin = async () => {
 };
 
 // ______________________________________________________
-// 
+//
 export const getType = () =>
   browser.storage.local.get("type").then((storage) => {
     if (!storage.type) {
