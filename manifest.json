@@ -15,7 +15,7 @@
     }
   },
  "icons": {
-    "48": "images/i-bui.png"
+    "48": "images/image.png"
   },
   "content_scripts": [{
       "matches": ["http://*/*", "https://*/*" ],

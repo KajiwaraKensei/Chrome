@@ -1,6 +1,9 @@
 {
   "cSpell.words": [
     "firestore",
+    "kajiwara",
+    "kajiwara kensei",
+    "kensei",
     "preact",
     "toastify",
     "webextension"
@@ -20,5 +23,6 @@
 "prettier.jsxSingleQuote": true,
 "prettier.jsxBracketSameLine": true,
 "prettier.vueIndentScriptAndStyle": true,
-"editor.formatOnSave": true
+"editor.formatOnSave": true,
+"git.ignoreLimitWarning": true
 }
