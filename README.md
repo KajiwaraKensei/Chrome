@@ -7,9 +7,12 @@
 # インストール
 
 ```
-    git@github.com:KajiwaraKensei/Chrome.git
+    git clone https://github.com/KajiwaraKensei/Chrome.git
     cd Chrome
     npm install
+    cd functions
+    npm install
+    cd ../
 ```
 
     ※ ビルドしない場合は「npm install」 は不要
