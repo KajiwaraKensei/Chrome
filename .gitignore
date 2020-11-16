@@ -1,0 +1,17 @@
+.DS_Store
+.vscode
+.env
+*.log
+dist/
+# Compiled JavaScript files
+*/*.js
+**/*.js.map
+functions/**/*.js
+# Except the ESLint config file
+!.eslintrc.js
+
+# TypeScript v1 declaration files
+typings/
+
+# Node.js dependency directory
+node_modules/
