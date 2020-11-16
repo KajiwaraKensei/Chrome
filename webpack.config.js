@@ -3,6 +3,7 @@ module.exports = {
   entry: {
     'content': "./src/content/index.tsx",
     'option': "./src/option/index.tsx",
+    'popup': "./src/popup/index.tsx",
     'background': "./src/background/index.js",
   },
   output: {

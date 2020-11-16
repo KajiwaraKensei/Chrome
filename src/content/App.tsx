@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import App from "~/content/components/Confirm";
 import Confirm, { callbackProps } from "./MessageAPI";
-import { openNewTab } from "~/utility";
+import { checkLogin, openNewTab } from "~/utility";
 
 type Props = {
   className?: string;
@@ -21,12 +21,14 @@ const Component: React.FC<Props> = ({ className }) => {
       openNewTab(confirmInfo.url);
     }
   };
+
   React.useEffect(() => {
+    checkLogin();
     Confirm((next) => {
       setDisplay(true);
       setConfirmInfo(next);
     });
-  });
+  }, []);
 
   return (
     <div className={className}>

@@ -8,6 +8,8 @@ export default (callback: (p: callbackProps) => void) => {
     switch (message.type) {
       case "onMessage":
         const type = await getType();
+        console.log(type);
+
         callback({ to: message.to, url: message.url, type });
     }
   });

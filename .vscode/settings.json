@@ -1,0 +1,24 @@
+{
+  "cSpell.words": [
+    "firestore",
+    "preact",
+    "toastify",
+    "webextension"
+  ],
+  "[javascript]": {
+    "editor.formatOnSave": true
+},
+"[typescript]": {
+    "editor.formatOnSave": true
+},
+"[javascriptreact]": {
+    "editor.formatOnSave": true
+},
+"[typescriptreact]": {
+  "editor.formatOnSave": true
+},
+"prettier.jsxSingleQuote": true,
+"prettier.jsxBracketSameLine": true,
+"prettier.vueIndentScriptAndStyle": true,
+"editor.formatOnSave": true
+}

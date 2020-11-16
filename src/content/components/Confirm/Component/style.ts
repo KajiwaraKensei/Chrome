@@ -134,6 +134,7 @@ const snow_man = css`
   }
   .footer_loco {
     justify-content: center;
+    padding: 0.25rem;
     & > button {
       margin: 0 0.25rem;
     }

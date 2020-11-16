@@ -45,11 +45,11 @@ const Component: React.FC<Props> = (props) => {
             がページを共有しています。開きますか？
           </p>
           <p className="notification_loco">
-            <label htmlFor="notification">通知で毎回確認しない</label>
+            <label htmlFor="notification">通知で毎回確認する</label>
             <Switch
               id="notification"
               size="small"
-              checked={notification}
+              checked={!notification}
               onChange={handleChange}
               color="primary"
             />
