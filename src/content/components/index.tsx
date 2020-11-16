@@ -1,3 +1,5 @@
+// ______________________________________________________
+// 全てのページないにボタンを常駐させる　ボツ
 import React from "react";
 import { browser } from "webextension-polyfill-ts";
 import styled from "styled-components";
@@ -5,14 +7,18 @@ import Character from "./Character";
 import CloseButton from "./CloseButton";
 import ConfigButton from "./ConfigButton";
 import SendButton from "./SendButton";
+
+// ______________________________________________________
+// 
 type Props = {
   className?: string;
 };
 export const width = 100;
 
+// ______________________________________________________
+// 
 const Component: React.FC<Props> = (props) => {
-  const port = browser.runtime.connect();
-  browser.storage.local.get("login").then(({ login }) => {});
+
   const [isDisplay, setISDisplay] = React.useState(true);
   const [toggle, setToggle] = React.useState(false);
   return (

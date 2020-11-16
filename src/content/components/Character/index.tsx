@@ -1,3 +1,5 @@
+// ______________________________________________________
+// ボツ
 import React from "react";
 import styled, { Bit } from "./style";
 import UFO from "./UFO";

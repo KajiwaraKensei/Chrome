@@ -1,8 +1,8 @@
 // ______________________________________________________
-//
+// popupで表示
 import React from "react";
 import styled from "styled-components";
-import { UserName, Config, Channels } from "./components";
+import { Channels } from "./components"; // 登録しているチャンネルの表示
 // ______________________________________________________
 //
 type Props = {};

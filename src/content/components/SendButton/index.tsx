@@ -1,3 +1,5 @@
+// ______________________________________________________
+// ボツ
 import React from "react";
 import styled from "./style";
 import { sendMessage } from "~/utility/CloudFunctions";
@@ -14,8 +16,8 @@ const Component: React.FC<Props> = (props) => {
     setLoading(true);
     getSelectChannel()
       .then((id) => sendMessage(id, location.href))
-      .then((tokens) => {})
-      .catch((err) => {})
+      .then((tokens) => { })
+      .catch((err) => { })
       .finally(() => {
         setLoading(false);
       });

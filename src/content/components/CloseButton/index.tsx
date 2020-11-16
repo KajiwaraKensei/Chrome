@@ -1,3 +1,5 @@
+// ______________________________________________________
+// ボツ
 import React from "react";
 import styled from "./style";
 export type Props = {

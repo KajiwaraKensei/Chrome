@@ -1,3 +1,5 @@
+// ______________________________________________________
+// 通知
 import React from "react";
 import styled from "./style";
 import Bird from "./SVG/bird";
@@ -9,6 +11,8 @@ import {
   getNotificationConfig,
 } from "~/utility/notification"; // chromeAPI(主に通知)
 
+// ______________________________________________________
+// 
 export type ConfirmType = "snow" | "bird" | "blooming";
 export type Props = {
   className?: string;
@@ -18,18 +22,23 @@ export type Props = {
   onChange?: (result: boolean) => void;
 };
 
+// ______________________________________________________
+// 
 const Component: React.FC<Props> = (props) => {
   const { className, url, to, type, onChange } = props;
-  const [notification, setNotification] = React.useState(false);
+  const [notification, setNotification] = React.useState(false); // 通知を受け取るかの設定フラグ
+
   React.useEffect(() => {
-    getNotificationConfig().then(setNotification);
+    getNotificationConfig().then(setNotification); // 通知の設定取得
   }, []);
 
+  // チェックボックスを押した時
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNotification(event.target.checked);
-    setNotificationConfig(event.target.checked);
+    setNotification(event.target.checked); // react
+    setNotificationConfig(event.target.checked); // chrome
   };
 
+  // 結果を返す
   const handleClick = (result: boolean) => () => {
     onChange && onChange(result);
   };

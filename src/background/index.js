@@ -1,9 +1,12 @@
+// ______________________________________________________
+// バックグラウンド
 import { browser } from "webextension-polyfill-ts";
 import { clearChannels, getChannels } from "../utility/channel";
 import { setChannel } from "../utility/CloudFunctions";
 import { getNotificationConfig } from "../utility/notification";
 
 const SENDER_ID = "577226677636";
+
 
 const refreshToken = async () => {
   const tokenParams = {
@@ -39,12 +42,16 @@ const refreshToken = async () => {
     }
   }
 };
+
+// インストール時
 chrome.runtime.onInstalled.addListener((details) => {
   refreshToken();
 });
 chrome.instanceID.onTokenRefresh.addListener(() => {
   refreshToken();
 });
+
+//　CloudFunctions
 chrome.gcm.onMessage.addListener(async (res) => {
   const url = res.data.message || "不明";
   const to = res.data.to || "guest";
@@ -59,6 +66,8 @@ chrome.gcm.onMessage.addListener(async (res) => {
   });
 });
 
+
+// content とのやりとり
 chrome.runtime.onConnect.addListener(function (port) {
   port.onMessage.addListener(function (request) {
     var path = request.type;

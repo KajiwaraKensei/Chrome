@@ -1,3 +1,5 @@
+// ______________________________________________________
+// ユーザー名の表示（ボツ）
 import React from "react";
 import styled from "./style";
 import { getUsername } from "~/utility";

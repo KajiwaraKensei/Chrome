@@ -1,10 +1,17 @@
+// ______________________________________________________
+// CloudFunctions
 import axios from "axios";
 import qs from "qs";
 import { getToken, getUsername } from ".";
 
+// ______________________________________________________
+// 
 const BASE_URL =
   "https://us-central1-extension-chrome-gotcha.cloudfunctions.net/api/";
 
+
+// ______________________________________________________
+// チャンネル登録
 export const setChannel = async (channelID: string) => {
   const token = await getToken();
   const query = qs.stringify({ channelID, token });
@@ -17,6 +24,8 @@ export const setChannel = async (channelID: string) => {
     .catch(() => false);
 };
 
+// ______________________________________________________
+// チャンネル削除
 export const deleteChannel = async (channelID: string) => {
   const token = await getToken();
   const query = qs.stringify({ channelID, token });
@@ -29,6 +38,8 @@ export const deleteChannel = async (channelID: string) => {
     .catch(() => false);
 };
 
+// ______________________________________________________
+// メッセージ送信
 export const sendMessage = async (channelID: string, message: string) => {
   const token = await getToken();
   const userName = await getUsername();

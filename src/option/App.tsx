@@ -1,5 +1,5 @@
 // ______________________________________________________
-//
+// 設定
 import React from "react";
 import { List, DisplayName } from "./components/Channels";
 import Reset from "./components/Reset";
